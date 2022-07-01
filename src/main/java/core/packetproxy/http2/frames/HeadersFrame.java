@@ -240,11 +240,11 @@ public class HeadersFrame extends Frame
 				buf.write(String.format("X-PacketProxy-HTTP2-Dependency: %d\r\n", dependency).getBytes());
 				buf.write(String.format("X-PacketProxy-HTTP2-Weight: %d\r\n", weight & 0xff).getBytes());
 			}
+			buf.write(String.format("X-PacketProxy-HTTP2-Type: %d\r\n", TYPE.ordinal()).getBytes());
+			buf.write(String.format("X-PacketProxy-HTTP2-Stream-Id: %d\r\n", streamId).getBytes());
+			buf.write(String.format("X-PacketProxy-HTTP2-Flags: %d\r\n", flags).getBytes());
 			buf.write(String.format("X-PacketProxy-HTTP2-UUID: %s\r\n", StringUtils.randomUUID()).getBytes());
 		}
-		buf.write(String.format("X-PacketProxy-HTTP2-Type: %d\r\n", TYPE.ordinal()).getBytes());
-		buf.write(String.format("X-PacketProxy-HTTP2-Stream-Id: %d\r\n", streamId).getBytes());
-		buf.write(String.format("X-PacketProxy-HTTP2-Flags: %d\r\n", flags).getBytes());
 		buf.write("\r\n".getBytes());
 
     	saveExtra(buf.toByteArray());
